@@ -2,10 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.1">
     <link rel="stylesheet" href="./all.css">
     <link rel="stylesheet" href="./TAV.css">
     <title>TAV</title>
+    <script src="TAV.js"></script>
 </head>
 
 <body>
@@ -33,6 +34,7 @@
 
         <p>
             Pour travailler de manière efficace et pertinente sur le son, nous utiliserons le merveilleux outil qu’est le sonagramme ! Le sonagramme affiche l'évolution du spectre d’un signal au cours du temps, offrant ainsi une représentation en trois dimensions : le temps, la fréquence et l’amplitude.<br>
+            <br>
             Pour le construire, nous avons besoin de passer dans le domaine fréquentiel et ce à court terme, c’est-à-dire sur une plage définie. On peut également choisir la pondération entre les plages pour adoucir le rendu (Rectangulaire ou Hann). Voilà mon implémentation de la TFCT :
         </p>
 
@@ -231,25 +233,25 @@
         </p>
 
         <pre><code>
-function [Y_modifie, valeurs_t_modifie] = reverbe(Y, valeurs_t, params)
+<span class="function">function</span> [Y_modifie, valeurs_t_modifie] = reverbe(Y, valeurs_t, params)
 
-    % Calculer le nombre de colonnes du décalement maximum
+    <span class="comment">% Calculer le nombre de colonnes du décalement maximum</span>
     delay_max = sum(valeurs_t < max(params(:, 1)));
     nb_freq = size(Y, 1);
     nb_temps = size(Y, 2);
     Y_modifie = [Y, zeros(nb_freq, delay_max)];
 
-    % Appliquer chaque réverbération
-    for idx = 1:size(params, 1)
+    <span class="comment">% Appliquer chaque réverbération</span>
+    <span class="function">for</span> idx = 1:size(params, 1)
         delay = sum(valeurs_t < params(idx, 1));
         taux = params(idx, 2);
         Y_modifie(:, delay + 1:nb_temps + delay) = Y_modifie(:, delay + 1:nb_temps + delay) + taux * Y;
-    end
+    <span class="function">end</span>
 
-    % Calculer les valeurs de temps en plus
+    <span class="comment">% Calculer les valeurs de temps en plus</span>
     valeurs_t_modifie = [valeurs_t, valeurs_t(end) + (1:delay_max) * valeurs_t(2)];
 
-end
+<span class="function">end</span>
         </code></pre>
 
         <h3>Modifier la vitesse de lecture</h3>
