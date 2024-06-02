@@ -58,6 +58,10 @@ nav .topnav a:hover {
 }
 
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     padding: 20px;
 }
 
@@ -103,3 +107,25 @@ footer {
 ::-webkit-scrollbar-thumb {
     background: rgb(0, 238, 255);
 }
+
+
+
+
+pre {
+    background-color: #f4f4f4; /* Light grey background */
+    border: 1px solid #777777; /* Light grey border */
+    padding: 10px 40px;
+    overflow-x: auto;
+    border-radius: 5px;
+}
+
+code {
+    font-family: Consolas, "Courier New", monospace; /* Monospaced font */
+    color: #000000; /* Black text */
+}
+
+.keyword { color: #A020F0; } /* Blue for keywords */
+.function { color: #0000FF; } /* Purple for functions */
+.comment { color: #008000; font-style: italic; } /* Green and italic for comments */
+.string { color: #B22222; } /* Firebrick red for strings */
+.number { color: #2E8B57; } /* Sea green for numbers */
