@@ -112,20 +112,20 @@ footer {
 
 
 pre {
-    background-color: #f4f4f4; /* Light grey background */
-    border: 1px solid #777777; /* Light grey border */
+    background-color: #f4f4f4;
+    border: 1px solid #777777;
     padding: 10px 40px;
     overflow-x: auto;
     border-radius: 5px;
 }
 
 code {
-    font-family: Consolas, "Courier New", monospace; /* Monospaced font */
-    color: #000000; /* Black text */
+    font-family: Consolas, "Courier New", monospace;
+    color: #000000;
 }
 
-.keyword { color: #A020F0; } /* Blue for keywords */
-.function { color: #0000FF; } /* Purple for functions */
-.comment { color: #008000; font-style: italic; } /* Green and italic for comments */
-.string { color: #B22222; } /* Firebrick red for strings */
-.number { color: #2E8B57; } /* Sea green for numbers */
+.keyword { color: #A020F0; }
+.function { color: #0000FF; }
+.comment { color: #008000; }
+.string { color: #B22222; }
+.number { color: #2E8B57; }

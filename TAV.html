@@ -39,14 +39,16 @@
         
 
         <pre><code>
-function Y = TFCT(y, N, D, fenetre)
+<span class="function">function</span> Y = TFCT(y, N, D, fenetre)
 
-    Y = buffer(y, N, N-D, 'nodelay');
-    fenetre = strcmp(fenetre, 'hann') * hann(N) + strcmp(fenetre, 'rect') * ones(N, 1);
+    Y = buffer(y, N, N-D, <span class="keyword">'nodelay'</span>);
+    fenetre = strcmp(fenetre, <span class="keyword">'hann'</span>) * hann(N) + strcmp(fenetre, <span class="keyword">'rect'</span>) * ones(N, 1);
+    
+    <span class="comment">% Calculer de la TFCT</span>
     Y = fft(Y .* fenetre(:));
     Y = Y(1:floor(N/2) + 1, :);
 
-end
+<span class="function">end</span>
         </code></pre>
 
         <p>
@@ -65,30 +67,31 @@ end
         <img src="data/polaire.jpg" alt="Sonagramme de Polaire" class="image">
 
         <p>
-            Nous devons mtn implémenter le chemin inverse pour reconstruire le signal d’origine.
+            Nous devons maintenant implémenter le chemin inverse pour reconstruire le signal d’origine.
             Voilà mon implémentation de la ITFCT (légère modification) :
         </p>
 
         <pre><code>
-function y = ITFCT(Y, N, D, fenetre)
+<span class="function">function</span> y = ITFCT(Y, N, D, fenetre)
 
     Y(end+1:N, :) = 0;
-    w = strcmp(fenetre, 'hann') * hann(N) + strcmp(fenetre, 'rect') * ones(N, 1);
+    w = strcmp(fenetre, <span class="keyword">'hann'</span>) * hann(N) + strcmp(fenetre, <span class="keyword">'rect'</span>) * ones(N, 1);
     n = (size(Y, 2) - 1) * D + N;
     y = zeros(n, 1);
     w_sum = zeros(n, 1);
 
     for t = 1:size(Y, 2)
         idx = (1:N) + (t - 1) * D;
-        y(idx) = y(idx) + ifft(Y(:, t), 'symmetric') .* w;
+        y(idx) = y(idx) + ifft(Y(:, t), <span class="keyword">'symmetric'</span>) .* w;
         w_sum(idx) = w_sum(idx) + w.^2;
     end
 
     y(w_sum ~= 0) = y(w_sum ~= 0) ./ w_sum(w_sum ~= 0);
     y = y(D:end-D);
 
-end        
+<span class="function">end</span>
         </code></pre>
+            
 
         <p>
             On peut vérifier que le signal reconstruit est bien le même que le signal d’origine :
@@ -107,19 +110,19 @@ end
         </p>
 
         <pre><code>
-function [Y_modifie, taux_compression] = compression(Y, k)
+<span class="function">function</span> [Y_modifie, taux_compression] = compression(Y, k)
 
-    % Conserver les k valeurs les plus hautes
+    <span class="comment">% Conserver les k valeurs les plus hautes</span>
     Y_modifie = zeros(size(Y));
-    for col = 1:size(Y, 2)
+    <span class="function">for</span> col = 1:size(Y, 2)
         [~, indices] = maxk(Y(:, col), k);
         Y_modifie(indices, col) = Y(indices, col);
-    end
+    <span class="function">end</span>
 
-    % Calcul du taux de compression
+    <span class="comment">% Calcul du taux de compression</span>
     taux_compression = (1 - nnz(Y_modifie) / numel(Y)) * 100;
 
-end
+<span class="function">end</span>
         </code></pre>
 
         <p>
@@ -138,23 +141,24 @@ end
         </p>
 
         <pre><code>
-function [Y_modifie, taux_compression] = compression_decimation(Y, m, df)
+<span class="function">function</span> [Y_modifie, taux_compression] = compression_decimation(Y, m, df)
 
-    % Décimer le sonagramme Y
+    <span class="comment">% Décimer le sonagramme Y</span>
     Y_decimated = Y(1:df:end, 1:df:end);
     Y_modifie_decimated = zeros(size(Y_decimated));
-    for col = 1:size(Y_decimated, 2)
+    <span class="function">for</span> col = 1:size(Y_decimated, 2)
         [~, indices] = maxk(Y_decimated(:, col), m);
         Y_modifie_decimated(indices, col) = Y_decimated(indices, col);
-    end
+    <span class="function">end</span>
 
-    % Reconstituer le sonagramme avec des zéros aux positions supprimées
+    <span class="comment">% Reconstituer le sonagramme avec des zéros aux positions supprimées</span>
     Y_modifie = zeros(size(Y));
     Y_modifie(1:df:end, 1:df:end) = Y_modifie_decimated * df;
 
-    % Calculer le taux de compression
+    <span class="comment">% Calculer le taux de compression</span>
     taux_compression = (1 - nnz(Y_modifie) / numel(Y)) * 100;
-end
+    
+<span class="function">end</span>
         </code></pre>
 
         <p>
@@ -272,25 +276,27 @@ end
 
 
         <pre><code>
-function y_modifie = etirement_temporel(y, taux)
+<span class="function">function</span> y_modifie = etirement_temporel(y, taux)
 
     N = 2048;
     D = 512;
-    Y = TFCT(y, N, D, 'hann');
+    Y = TFCT(y, N, D, <span class="keyword">'hann'</span>);
     C = 1:taux:size(Y,2);
     y_modifie = zeros(size(Y,1),length(C));
     ang = angle(Y(:,1));
 
-    for i = 1:length(C)-1
+    <span class="comment">% Reconstruction du signal</span>
+    <span class="function">for</span> i = 1:length(C)-1
         c = floor(C(i));
         alpha = C(i) - c;
         rho = (1-alpha)*abs(Y(:,c)) + alpha*abs(Y(:,c+1));
         y_modifie(:,i) = rho .* exp(1j * ang);
         ang = ang + angle(Y(:,c+1)) - angle(Y(:,c));
-    end
+    <span class="function">end</span>
     
-    y_modifie = ITFCT(y_modifie, N, D, 'hann');
-end
+    y_modifie = ITFCT(y_modifie, N, D, <span class="keyword">'hann'</span>);
+
+<span class="function">end</span>
         </code></pre>
 
         <p>
@@ -307,17 +313,11 @@ end
             </audio>
         </div>
         
-
+        <h2>Crédit</h2>
+        <img src="data/fidel.jpg" alt="Crédit" class="image_album">
+        <h5>Polaire - Gen (Album: Fidel)</h5>
         
     </main>
-
-
-
-
-
-
-
-
 
 
     <footer>
