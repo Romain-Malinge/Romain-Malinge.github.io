@@ -158,13 +158,23 @@ end
         </code></pre>
 
         <p>
-            On peut tester notre nouvelle fonction de compression sur le sonagramme de Polaire (df = 2) :
+            Le facteur df (décimation factor) correspond à l’intervalle entre chaque ligne ou colonne que l’on garde. Ici on a df = 2, donc il reste 1 ligne sur 2 et une colonne sur 2 :
         </p>
 
         <img src="data/polaire_compression_decimation.jpg" alt="Sonagramme de Polaire compressé" class="image">
 
         <audio controls>
             <source src="data/Polaire_compression_decimation.wav" type="audio/wav">
+            Votre navigateur ne supporte pas la balise audio.
+        </audio>
+
+        <p>
+            On obtient 95% de compression ! Pour df = 3, le signal devient trop détérioré et la voix robotique :
+        </p>
+
+        <img src="data/polaire_compression_decimation_df3.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <audio controls>
+            <source src="data/Polaire_compression_decimation_df3.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -198,7 +208,105 @@ end
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
+        <h4>Echo simple</h4>
+        <img src="data/polaire_echo.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <audio controls>
+            <source src="data/Polaire_echo.wav" type="audio/wav">
+            Votre navigateur ne supporte pas la balise audio.
+        </audio>
 
+        <h4>Echo multiple</h4>
+        <img src="data/polaire_echo_multiple.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <audio controls>
+            <source src="data/Polaire_echo_multiple.wav" type="audio/wav">
+            Votre navigateur ne supporte pas la balise audio.
+        </audio>
+
+        <p>
+            Voilà le code de la fonction de réverbération (params est une matrice de deux colonnes, la première contenant les délais et la deuxième les taux de réverbération) :
+        </p>
+
+        <pre><code>
+function [Y_modifie, valeurs_t_modifie] = reverbe(Y, valeurs_t, params)
+
+    % Calculer le nombre de colonnes du décalement maximum
+    delay_max = sum(valeurs_t < max(params(:, 1)));
+    nb_freq = size(Y, 1);
+    nb_temps = size(Y, 2);
+    Y_modifie = [Y, zeros(nb_freq, delay_max)];
+
+    % Appliquer chaque réverbération
+    for idx = 1:size(params, 1)
+        delay = sum(valeurs_t < params(idx, 1));
+        taux = params(idx, 2);
+        Y_modifie(:, delay + 1:nb_temps + delay) = Y_modifie(:, delay + 1:nb_temps + delay) + taux * Y;
+    end
+
+    % Calculer les valeurs de temps en plus
+    valeurs_t_modifie = [valeurs_t, valeurs_t(end) + (1:delay_max) * valeurs_t(2)];
+
+end
+        </code></pre>
+
+        <h3>Modifier la vitesse de lecture</h3>
+        <p>
+            Afin d’étirer temporellement un signal audio, une première idée consiste à changer la vitesse de lecture, ou, de façon équivalente, à faire comme si le signal avait été échantillonné à une fréquence plus élevée que sa véritable fréquence d’échantillonnage :
+        </p>
+
+        <img src="data/accel_ralent_null.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <div class="audio-container">
+            <audio controls class="audio-item">
+                <source src="data/Polaire_ralent_null.wav" type="audio/wav">
+                Votre navigateur ne supporte pas la balise audio.
+            </audio>
+            <audio controls>
+                <source src="data/Polaire_accel_null.wav" type="audio/wav">
+                Votre navigateur ne supporte pas la balise audio.
+            </audio>
+        </div>
+
+        <p>
+            Cependant, cette méthode altère également le contenu fréquentiel du signal. Pour résoudre ce problème, un algorithme d’étirement temporel traite le module du sonagramme du signal comme une image, que l’on peut facilement étirer horizontalement par simple interpolation linéaire. Le problème réside plutôt dans la manipulation de la phase.<br>
+            Cet algorithme propose d’utiliser, comme différence de phase entre deux colonnes du sonagramme interpolé, la différence de phase entre les deux colonnes du sonagramme d’origine ayant servi à l’interpolation :
+        </p>
+
+
+        <pre><code>
+function y_modifie = etirement_temporel(y, taux)
+
+    N = 2048;
+    D = 512;
+    Y = TFCT(y, N, D, 'hann');
+    C = 1:taux:size(Y,2);
+    y_modifie = zeros(size(Y,1),length(C));
+    ang = angle(Y(:,1));
+
+    for i = 1:length(C)-1
+        c = floor(C(i));
+        alpha = C(i) - c;
+        rho = (1-alpha)*abs(Y(:,c)) + alpha*abs(Y(:,c+1));
+        y_modifie(:,i) = rho .* exp(1j * ang);
+        ang = ang + angle(Y(:,c+1)) - angle(Y(:,c));
+    end
+    
+    y_modifie = ITFCT(y_modifie, N, D, 'hann');
+end
+        </code></pre>
+
+        <p>
+            De cette manière, la modification de vitesse ne change pas la tonalité de la voix :
+        </p>
+        <div class="audio-container">
+            <audio controls class="audio-item">
+                <source src="data/Polaire_ralent_bien.wav" type="audio/wav">
+                Votre navigateur ne supporte pas la balise audio.
+            </audio>
+            <audio controls>
+                <source src="data/Polaire_accel_bien.wav" type="audio/wav">
+                Votre navigateur ne supporte pas la balise audio.
+            </audio>
+        </div>
+        
 
         
     </main>
