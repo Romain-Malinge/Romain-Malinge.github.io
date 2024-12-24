@@ -1,5 +1,5 @@
 :root {
-    --main-color: #ff8400;
+    --main-color: #fffffff2;
     --main-color-lighter: #ffbb78;
     --main-color-darker: #c45200;
 }
@@ -22,13 +22,24 @@ header {
     background-image: url('data/ALL/Aaakls.png');
     background-repeat: no-repeat;
     background-position: top;
-    background-size: cover;
+    background-size: 100%;
     color: #fff;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    animation: moveBackground 120s linear infinite;
 }
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
 
 header h1 {
     font-family: "Audiowide", serif;
@@ -37,32 +48,39 @@ header h1 {
     color: #000000;
     mix-blend-mode: color-burn;
     margin: 0;
-    padding: 10px;
+    padding: 10px 30px;
+    letter-spacing: 2px;
+    transition: letter-spacing 0.5s;
+}
+
+header h1:hover {
+    letter-spacing:4px;
 }
 
 nav {
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 nav .topnav {
     display: flex;
     justify-content: center;
+    mix-blend-mode:hard-light;
 }
 
 nav .topnav a {
     color: var(--main-color);
-    background-color: #292929;
-    font-size: 20px;
+    background-color: #232323;
+    font-size: 25px;
     text-decoration: none;
     padding: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.5s, color 0.5s;
 }
 
 nav .topnav a:hover {
-    color: #444;
+    color: #000000;
     background-color: var(--main-color);
 }
 
