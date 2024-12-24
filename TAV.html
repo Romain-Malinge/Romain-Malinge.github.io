@@ -58,7 +58,7 @@
         </p>
         
         <audio controls>
-            <source src="data/Polaire.wav" type="audio/wav">
+            <source src="data/TAV/Polaire.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -66,7 +66,7 @@
             Voici le sonagramme obtenu avec la fonction TFCT :
         </p>
 
-        <img src="data/polaire.jpg" alt="Sonagramme de Polaire" class="image">
+        <img src="data/TAV/polaire.jpg" alt="Sonagramme de Polaire" class="image">
 
         <p>
             Nous devons maintenant implémenter le chemin inverse pour reconstruire le signal d’origine.
@@ -100,7 +100,7 @@
         </p>
 
         <audio controls>
-            <source src="data/Polaire_reconstruit.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_reconstruit.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -131,10 +131,10 @@
             On peut alors tester notre fonction de compression sur le sonagramme de Polaire :
         </p>
 
-        <img src="data/polaire_compression_naïve.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_compression_naïve.jpg" alt="Sonagramme de Polaire compressé" class="image">
 
         <audio controls>
-            <source src="data/Polaire_compression_naïve.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_compression_naïve.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -167,10 +167,10 @@
             Le facteur df (décimation factor) correspond à l’intervalle entre chaque ligne ou colonne que l’on garde. Ici on a df = 2, donc il reste 1 ligne sur 2 et une colonne sur 2 :
         </p>
 
-        <img src="data/polaire_compression_decimation.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_compression_decimation.jpg" alt="Sonagramme de Polaire compressé" class="image">
 
         <audio controls>
-            <source src="data/Polaire_compression_decimation.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_compression_decimation.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -178,9 +178,9 @@
             On obtient 95% de compression ! Pour df = 3, le signal devient trop détérioré et la voix robotique :
         </p>
 
-        <img src="data/polaire_compression_decimation_df3.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_compression_decimation_df3.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <audio controls>
-            <source src="data/Polaire_compression_decimation_df3.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_compression_decimation_df3.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -194,37 +194,37 @@
         </p>
 
         <h4>Filtres passe bas</h4>
-        <img src="data/polaire_passe_bas.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_passe_bas.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <audio controls>
-            <source src="data/Polaire_passe_bas.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_passe_bas.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
         <h4>Filtres passe haut</h4>
-        <img src="data/polaire_passe_haut.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_passe_haut.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <audio controls>
-            <source src="data/Polaire_passe_haut.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_passe_haut.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
         <h4>Filtres passe bande</h4>
-        <img src="data/polaire_passe_bande.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_passe_bande.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <audio controls>
-            <source src="data/Polaire_passe_bande.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_passe_bande.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
         <h4>Echo simple</h4>
-        <img src="data/polaire_echo.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_echo.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <audio controls>
-            <source src="data/Polaire_echo.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_echo.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
         <h4>Echo multiple</h4>
-        <img src="data/polaire_echo_multiple.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/polaire_echo_multiple.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <audio controls>
-            <source src="data/Polaire_echo_multiple.wav" type="audio/wav">
+            <source src="data/TAV/Polaire_echo_multiple.wav" type="audio/wav">
             Votre navigateur ne supporte pas la balise audio.
         </audio>
 
@@ -259,14 +259,14 @@
             Afin d’étirer temporellement un signal audio, une première idée consiste à changer la vitesse de lecture, ou, de façon équivalente, à faire comme si le signal avait été échantillonné à une fréquence plus élevée que sa véritable fréquence d’échantillonnage :
         </p>
 
-        <img src="data/accel_ralent_null.jpg" alt="Sonagramme de Polaire compressé" class="image">
+        <img src="data/TAV/accel_ralent_null.jpg" alt="Sonagramme de Polaire compressé" class="image">
         <div class="audio-container">
             <audio controls class="audio-item">
-                <source src="data/Polaire_ralent_null.wav" type="audio/wav">
+                <source src="data/TAV/Polaire_ralent_null.wav" type="audio/wav">
                 Votre navigateur ne supporte pas la balise audio.
             </audio>
             <audio controls>
-                <source src="data/Polaire_accel_null.wav" type="audio/wav">
+                <source src="data/TAV/Polaire_accel_null.wav" type="audio/wav">
                 Votre navigateur ne supporte pas la balise audio.
             </audio>
         </div>
@@ -306,17 +306,17 @@
         </p>
         <div class="audio-container">
             <audio controls class="audio-item">
-                <source src="data/Polaire_ralent_bien.wav" type="audio/wav">
+                <source src="data/TAV/Polaire_ralent_bien.wav" type="audio/wav">
                 Votre navigateur ne supporte pas la balise audio.
             </audio>
             <audio controls>
-                <source src="data/Polaire_accel_bien.wav" type="audio/wav">
+                <source src="data/TAV/Polaire_accel_bien.wav" type="audio/wav">
                 Votre navigateur ne supporte pas la balise audio.
             </audio>
         </div>
         
         <h2>Crédit</h2>
-        <img src="data/fidel.jpg" alt="Crédit" class="image_album">
+        <img src="data/TAV/fidel.jpg" alt="Crédit" class="image_album">
         <h5>Polaire - Gen (Album: Fidel)</h5>
         
     </main>
