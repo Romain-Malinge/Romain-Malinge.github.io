@@ -95,3 +95,8 @@ audio {
     margin-right: 30px;
 }
 
+.keyword { color: #A020F0; }
+.function { color: #0000FF; }
+.comment { color: #008000; }
+.string { color: #B22222; }
+.number { color: #2E8B57; }
