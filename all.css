@@ -64,7 +64,9 @@ nav {
 
 nav .topnav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
     mix-blend-mode:hard-light;
 }
 
@@ -165,12 +167,5 @@ code {
     header h1 {
         font-size: 7vw;
         opacity: 1;
-    }
-
-    .topnav {
-        display: flex;        /* Active le mode flexbox */
-        flex-wrap: wrap;      /* Permet aux éléments de passer à la ligne */
-        justify-content: space-between; /* Répartit les éléments sur chaque ligne */
-        gap: 10px;            /* Ajoute un espace entre les éléments */
     }
 }
