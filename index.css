@@ -1,7 +1,3 @@
-/* index.css */
-
-/* Styles existants */
-
 .title {
     width: 100%;
     height: 45vw;
@@ -12,7 +8,6 @@
     font-family: "Ballet", serif;
     font-size: 30vw;
     width: 100%;
-    height: 10cm;
     padding: 0 50px;
     margin: 0;
     background: linear-gradient(var(--main-color-lighter) 20%, var(--main-color) 50%, #00000000 60%);
@@ -37,14 +32,24 @@
     letter-spacing: 4px;
 }
 
+.bonjour {
+    font-size: 5vw;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    padding-left: 20%;
+    color: white;
+}
+
 .message-acceuille {
     font-size: 3vw;
     color: #fff;
     text-align: left;
     line-height: 1.5;
-    margin: 20px 150px;
+    margin: 0;
     word-wrap: break-word;
     max-width: 90%;
+    padding: 0 10%;
 }
 
 /* liste de projet */
