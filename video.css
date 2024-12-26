@@ -38,12 +38,23 @@
     padding: 0;
     margin: 0;
     padding-left: 20%;
-    color: white;
+    color: var(--main-color-lighter);
 }
 
 .message-acceuille {
     font-size: 3vw;
     color: #fff;
+    text-align: left;
+    line-height: 1.5;
+    margin: 0;
+    word-wrap: break-word;
+    max-width: 90%;
+    padding: 0 10%;
+}
+
+.message-petit {
+    font-size: 3vw;
+    color: #4d4d4d;
     text-align: left;
     line-height: 1.5;
     margin: 0;

@@ -38,7 +38,7 @@
     padding: 0;
     margin: 0;
     padding-left: 20%;
-    color: white;
+    color: var(--main-color-lighter);
 }
 
 .message-acceuille {
@@ -93,6 +93,7 @@
     width: 100%;
     height: 300px;
     border-radius: 10px;
+    background-color: #fff;
 }
 
 /* Styles pour les téléphones */
