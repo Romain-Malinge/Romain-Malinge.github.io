@@ -1,0 +1,132 @@
+.title {
+    width: 100%;
+    height: 45vw;
+    text-align: center;
+}
+
+.titleContent {
+    font-family: "Ballet", serif;
+    font-size: 30vw;
+    width: 100%;
+    padding: 0 10vw;
+    margin: 0;
+    background: linear-gradient(var(--main-color-lighter) 20%, var(--main-color) 50%, #00000000 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.titleContent2 {
+    font-family: "AudioWide", serif;
+    font-size: 8vw;
+    width: 100%;
+    padding: 20px 0;
+    color: white;
+    position: relative;
+    top: -60%;
+    letter-spacing: -6px;
+    transition: letter-spacing 0.5s;
+}
+
+.titleContent2:hover {
+    letter-spacing: 4px;
+}
+
+.bonjour {
+    font-size: 5vw;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    padding-left: 20%;
+    color: white;
+}
+
+.message-acceuille {
+    font-size: 3vw;
+    color: #fff;
+    text-align: left;
+    line-height: 1.5;
+    margin: 0;
+    word-wrap: break-word;
+    max-width: 90%;
+    padding: 0 10%;
+}
+
+.videoContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+    width: 80%;
+    margin: 0 60px;
+    padding: 20px;
+    padding-bottom: 60px;
+}
+
+.video-grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.5s, transform 0.3s;
+    height: auto;
+}
+
+.video-grp:hover {
+    background-color: var(--main-color);
+    transform: scale(1.05);
+}
+
+.video-grp p {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    font-style: bold;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.video-grp img,
+.video-grp video {
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+}
+
+/* Styles pour les téléphones */
+@media (max-width: 768px) {
+
+    .titleContent {
+        font-size: 25vw;
+    }
+
+    .titleContent2 {
+        letter-spacing: 0px;
+        top: -50%;
+    }
+
+    .message-acceuille {
+        font-size: 4vw;
+        margin: 10px 20px;
+    }
+
+    .videoContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 80%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .video-grp img {
+        height: 200px;
+    }
+
+    .video-grp p {
+        font-size: 20px;
+    }
+}
+
