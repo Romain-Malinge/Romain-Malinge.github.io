@@ -34,13 +34,16 @@ header {
 
 @keyframes moveBackground {
     0% {
-        background-position: 0 0;
+        background-position: 0 10%;
     }
     100% {
         background-position: 0 100%;
     }
 }
 
+header a {
+    text-decoration: none;
+}
 
 header h1 {
     font-family: "Audiowide", serif;

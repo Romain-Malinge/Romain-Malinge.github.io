@@ -52,6 +52,14 @@
     padding: 0 10%;
 }
 
+.message-acceuille a {
+    color: var(--main-color);
+}
+
+.message-acceuille a:hover {
+    color: #ff8c00;
+}
+
 .videoContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
@@ -75,7 +83,6 @@
 }
 
 .video-grp:hover {
-    background-color: var(--main-color);
     transform: scale(1.05);
 }
 

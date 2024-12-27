@@ -52,6 +52,14 @@
     padding: 0 10%;
 }
 
+.message-acceuille a {
+    color: var(--main-color);
+}
+
+.message-acceuille a:hover {
+    color: #ff8c00;
+}
+
 .message-petit {
     font-size: 3vw;
     color: #4d4d4d;
@@ -86,7 +94,6 @@
 }
 
 .video-grp:hover {
-    background-color: var(--main-color);
     transform: scale(1.05);
 }
 
