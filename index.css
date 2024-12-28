@@ -2,6 +2,7 @@
     width: 100%;
     height: 45vw;
     text-align: center;
+    transform: translateY(5%);
 }
 
 .titleContent {
@@ -35,7 +36,6 @@
 .bonjour {
     font-size: 5vw;
     width: 100%;
-    padding: 0;
     margin: 0;
     padding-left: 20%;
     color: var(--main-color-lighter);
