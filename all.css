@@ -172,6 +172,11 @@ code {
         flex-direction: column;
         padding-top: 20px;
     }
+
+    header nav {
+        margin: 0;
+        padding: 0;
+    }
     
     header h1 {
         font-size: 7vw;
