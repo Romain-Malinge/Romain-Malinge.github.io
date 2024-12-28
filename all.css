@@ -164,6 +164,12 @@ code {
     color: #000000;
 }
 
+.espace {
+    margin-top: 50px;
+}
+
+
+
 /* Styles pour les téléphones */
 @media (max-width: 768px) {
 
