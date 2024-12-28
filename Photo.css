@@ -115,9 +115,12 @@
         top: -50%;
     }
 
+    .bonjour {
+        font-size: 10vw;
+    }
+
     .message-acceuille {
-        font-size: 4vw;
-        margin: 10px 20px;
+        font-size: 6vw;
     }
 
     .videoContainer {
